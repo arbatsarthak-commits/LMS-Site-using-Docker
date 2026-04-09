@@ -1,0 +1,402 @@
+:root {
+  --text: #333333;
+  --primary: #2196f3;
+  --button: #007bff;
+  --bg: #f0f0f0;
+  --success: #4caf50;
+  --danger: #e53935;
+
+  --card: #ffffff;
+  --muted: rgba(51, 51, 51, 0.7);
+  --border: rgba(51, 51, 51, 0.12);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --sidebar: #ffffff;
+  --sidebarHover: rgba(33, 150, 243, 0.08);
+  --topbar: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body.dark {
+  --text: #e7e7e7;
+  --bg: #0f1218;
+  --card: #141a24;
+  --sidebar: #141a24;
+  --topbar: #141a24;
+  --muted: rgba(231, 231, 231, 0.72);
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --sidebarHover: rgba(33, 150, 243, 0.14);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.appShell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Layout */
+.appLayout {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+}
+
+.sidebar {
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebarBrand {
+  display: grid;
+  gap: 4px;
+  padding: 10px 10px 6px;
+}
+
+.sidebarBrandTitle {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.sidebarBrandSub {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.sidebarNav {
+  display: grid;
+  gap: 6px;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.sidebarLink:hover {
+  background: var(--sidebarHover);
+  border-color: rgba(33, 150, 243, 0.12);
+}
+
+.sidebarLinkActive {
+  background: rgba(33, 150, 243, 0.14);
+  border-color: rgba(33, 150, 243, 0.22);
+  color: var(--text);
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.mainArea {
+  display: grid;
+  grid-template-rows: 64px 1fr;
+  min-width: 0;
+}
+
+.topNav {
+  background: var(--topbar);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  gap: 12px;
+}
+
+.topNavLeft {
+  display: grid;
+  gap: 2px;
+}
+
+.pageTitle {
+  font-size: 20px;
+  margin: 0;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.topNavRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(51, 51, 51, 0.04);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.content {
+  padding: 18px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+
+.subTitle {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 12;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.cardTitle {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.cardBody {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.btnRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  border: 1px solid rgba(0, 123, 255, 0.25);
+  background: var(--button);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btnDanger {
+  background: var(--danger);
+  border-color: rgba(229, 57, 53, 0.25);
+}
+
+.btnSuccess {
+  background: var(--success);
+  border-color: rgba(76, 175, 80, 0.25);
+}
+
+.btnNeutral {
+  background: rgba(51, 51, 51, 0.08);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.formCard {
+  max-width: 520px;
+  margin: 20px auto 0;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(33, 150, 243, 0.6);
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15);
+}
+
+/* Tabs */
+.tabsRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(51, 51, 51, 0.04);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.tabActive {
+  background: rgba(33, 150, 243, 0.14);
+  border-color: rgba(33, 150, 243, 0.22);
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.modal {
+  width: min(820px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 900;
+  background: rgba(51, 51, 51, 0.04);
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+
+.summaryCard {
+  grid-column: span 12;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.summaryLabel {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.summaryValue {
+  font-size: 22px;
+  font-weight: 900;
+  margin-top: 6px;
+}
+
+@media (min-width: 720px) {
+  .card {
+    grid-column: span 4;
+  }
+
+  .summaryCard {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .appLayout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}

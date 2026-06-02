@@ -4,27 +4,19 @@ import { useApp } from '../context/appContext.js'
 
 export default function Payment() {
   const navigate = useNavigate()
-  const { currentUser, getRegisteredCourses, courses, payForCourse } = useApp()
-
-  const registered = currentUser ? getRegisteredCourses(currentUser.username) : []
-  const [course, setCourse] = useState(registered[0] || '')
+  const { myCourses, payCourse, refreshMyCourses } = useApp()
+  const registered = myCourses
+  const [courseId, setCourseId] = useState(registered[0]?.id || '')
 
   const [amount, setAmount] = useState('')
   const [paid, setPaid] = useState(false)
 
-  function payNow() {
-    const courseObj = courses.find((c) => c.name === course)
-    const feeToPay = amount ? Number(amount) : Number(courseObj?.fee || 0)
-
-    const res = payForCourse({
-      username: currentUser?.username,
-      courseName: course,
-      amount: feeToPay,
-    })
-    if (!res.ok) {
-      alert(res.message || 'Payment failed')
-      return
-    }
+  async function payNow() {
+    const c = registered.find((x) => String(x.id) === String(courseId))
+    const feeToPay = amount ? Number(amount) : Number(c?.fee || 0)
+    const res = await payCourse({ courseId: Number(courseId), amount: feeToPay })
+    if (!res.ok) return alert(res.message || 'Payment failed')
+    await refreshMyCourses()
     setPaid(true)
   }
 
@@ -52,7 +44,7 @@ export default function Payment() {
 
       <div className="card formCard">
         <h2 className="cardTitle">Pay Fees</h2>
-        <p className="cardBody">Enter amount and click Pay Now (dummy payment).</p>
+        <p className="cardBody">Enter amount and click Pay Now (saved in database).</p>
 
         <div className="form">
           <div className="field">
@@ -62,16 +54,16 @@ export default function Payment() {
             <select
               id="payCourse"
               className="input"
-              value={course}
+              value={courseId}
               onChange={(e) => {
-                setCourse(e.target.value)
+                setCourseId(e.target.value)
                 setPaid(false)
               }}
               disabled={paid}
             >
               {registered.map((c) => (
-                <option key={c} value={c}>
-                  {c}
+                <option key={c.id} value={c.id}>
+                  {c.name}
                 </option>
               ))}
             </select>
@@ -104,7 +96,7 @@ export default function Payment() {
           {paid ? (
             <div className="card" style={{ borderColor: 'rgba(76,175,80,0.25)' }}>
               <p style={{ margin: 0, color: '#1e7e34', fontWeight: 900 }}>
-                Payment Successful ({course})
+                Payment Successful
               </p>
             </div>
           ) : null}

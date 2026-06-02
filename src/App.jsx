@@ -11,6 +11,9 @@ import Salary from './pages/Salary.jsx'
 import Quiz from './pages/Quiz.jsx'
 import Certificate from './pages/Certificate.jsx'
 import Teachers from './pages/Teachers.jsx'
+import Payment from './pages/Payment.jsx'
+import Payments from './pages/Payments.jsx'
+import ToastStack from './components/ToastStack.jsx'
 
 function AppRoutes() {
   return (
@@ -25,6 +28,8 @@ function AppRoutes() {
         <Route path="/students" element={<Students />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/salary" element={<Salary />} />
+        <Route path="/payments" element={<Payments />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/teachers" element={<Teachers />} />
@@ -40,6 +45,7 @@ export default function App() {
     <BrowserRouter>
       <AppProvider>
         <AppRoutes />
+        <ToastStack />
       </AppProvider>
     </BrowserRouter>
   )

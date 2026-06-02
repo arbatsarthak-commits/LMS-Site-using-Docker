@@ -52,7 +52,7 @@ export default function Dashboard() {
         <div className="summaryCard">
           <div className="summaryLabel">System</div>
           <div className="summaryValue" style={{ fontSize: 14 }}>
-            Dummy data • No backend
+            Backend connected
           </div>
         </div>
       </div>
@@ -60,8 +60,8 @@ export default function Dashboard() {
       <div className="card">
         <h2 className="cardTitle">Welcome</h2>
         <p className="cardBody" style={{ marginBottom: 0 }}>
-          Use the sidebar to manage students, register courses, and view salary calculations — all
-          stored in React state (no backend).
+          Use the sidebar to manage students, register courses, record payments, and view salary
+          calculations — stored in MySQL via PHP APIs.
         </p>
       </div>
     </div>
